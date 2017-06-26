@@ -1,0 +1,219 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="UOP_YES1QModelStoreContainer" CdmEntityContainer="UOP_YES1QEntities1">
+    <EntitySetMapping Name="YES_APPLICATION_USER">
+      <EntityTypeMapping TypeName="UOP_YES1QModel.YES_APPLICATION_USER">
+        <MappingFragment StoreEntitySet="YES_APPLICATION_USER">
+          <ScalarProperty Name="EMPLOYEE_ID" ColumnName="EMPLOYEE_ID" />
+          <ScalarProperty Name="FIRST_NM" ColumnName="FIRST_NM" />
+          <ScalarProperty Name="MIDDLE_NM" ColumnName="MIDDLE_NM" />
+          <ScalarProperty Name="LAST_NM" ColumnName="LAST_NM" />
+          <ScalarProperty Name="EMAIL_ADDR" ColumnName="EMAIL_ADDR" />
+          <ScalarProperty Name="DISPLAY_NM" ColumnName="DISPLAY_NM" />
+          <ScalarProperty Name="ACTIVE_IND" ColumnName="ACTIVE_IND" />
+          <ScalarProperty Name="CREATED_ON_DT" ColumnName="CREATED_ON_DT" />
+          <ScalarProperty Name="CREATED_BY_USER_ID" ColumnName="CREATED_BY_USER_ID" />
+          <ScalarProperty Name="UPDATED_ON_DT" ColumnName="UPDATED_ON_DT" />
+          <ScalarProperty Name="UPDATED_BY_USER_ID" ColumnName="UPDATED_BY_USER_ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="YES_ESTIMATE_COMMON">
+      <EntityTypeMapping TypeName="UOP_YES1QModel.YES_ESTIMATE_COMMON">
+        <MappingFragment StoreEntitySet="YES_ESTIMATE_COMMON">
+          <ScalarProperty Name="LPI_TECHO_EST_ID" ColumnName="LPI_TECHO_EST_ID" />
+          <ScalarProperty Name="BASE_CASE_IND" ColumnName="BASE_CASE_IND" />
+          <ScalarProperty Name="SYNC_ON_DT" ColumnName="SYNC_ON_DT" />
+          <ScalarProperty Name="SYNC_BY_USER_ID" ColumnName="SYNC_BY_USER_ID" />
+          <ScalarProperty Name="UPDATED_ON_DT" ColumnName="UPDATED_ON_DT" />
+          <ScalarProperty Name="UPDATED_BY_USER_ID" ColumnName="UPDATED_BY_USER_ID" />
+          <ScalarProperty Name="CREATED_ON_DT" ColumnName="CREATED_ON_DT" />
+          <ScalarProperty Name="CREATED_BY_USER_ID" ColumnName="CREATED_BY_USER_ID" />
+          <ScalarProperty Name="PURPOSE_CD" ColumnName="PURPOSE_CD" />
+          <ScalarProperty Name="UNIT_PREFERENCE_CD" ColumnName="UNIT_PREFERENCE_CD" />
+          <ScalarProperty Name="DELETE_IND" ColumnName="DELETE_IND" />
+          <ScalarProperty Name="ESTIMATE_TO_CUSTOMER_IND" ColumnName="ESTIMATE_TO_CUSTOMER_IND" />
+          <ScalarProperty Name="DESIGN_BASIS_IND" ColumnName="DESIGN_BASIS_IND" />
+          <ScalarProperty Name="OTHER_HOUR_PRD" ColumnName="OTHER_HOUR_PRD" />
+          <ScalarProperty Name="ESTIMATE_HOUR_PRD" ColumnName="ESTIMATE_HOUR_PRD" />
+          <ScalarProperty Name="REQUEST_ESTIMATE_STATUS_CD" ColumnName="REQUEST_ESTIMATE_STATUS_CD" />
+          <ScalarProperty Name="ESTIMATE_ISSUE_DT" ColumnName="ESTIMATE_ISSUE_DT" />
+          <ScalarProperty Name="ESTIMATE_ASSIGNED_DT" ColumnName="ESTIMATE_ASSIGNED_DT" />
+          <ScalarProperty Name="YE_REVISION_IND" ColumnName="YE_REVISION_IND" />
+          <ScalarProperty Name="ESTIMATED_BY_ID" ColumnName="ESTIMATED_BY_ID" />
+          <ScalarProperty Name="TECHNOLOGY_CD" ColumnName="TECHNOLOGY_CD" />
+          <ScalarProperty Name="LOCATION_ID" ColumnName="LOCATION_ID" />
+          <ScalarProperty Name="CUSTOMER_ID" ColumnName="CUSTOMER_ID" />
+          <ScalarProperty Name="ESTIMATION_DESC" ColumnName="ESTIMATION_DESC" />
+          <ScalarProperty Name="REQUEST_ID" ColumnName="REQUEST_ID" />
+          <ScalarProperty Name="ESTIMATE_ID_SQ" ColumnName="ESTIMATE_ID_SQ" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="YES_CUSTOMER">
+      <EntityTypeMapping TypeName="UOP_YES1QModel.YES_CUSTOMER">
+        <MappingFragment StoreEntitySet="YES_CUSTOMER">
+          <ScalarProperty Name="UPDATED_ON_DT" ColumnName="UPDATED_ON_DT" />
+          <ScalarProperty Name="UPDATED_BY_USER_ID" ColumnName="UPDATED_BY_USER_ID" />
+          <ScalarProperty Name="CREATED_ON_DT" ColumnName="CREATED_ON_DT" />
+          <ScalarProperty Name="CREATED_BY_USER_ID" ColumnName="CREATED_BY_USER_ID" />
+          <ScalarProperty Name="CONTACT_NUM" ColumnName="CONTACT_NUM" />
+          <ScalarProperty Name="CUSTOMER_EMAIL_ID" ColumnName="CUSTOMER_EMAIL_ID" />
+          <ScalarProperty Name="CUSTOMER_NM" ColumnName="CUSTOMER_NM" />
+          <ScalarProperty Name="CUSTOMER_ID_SQ" ColumnName="CUSTOMER_ID_SQ" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="YES_Instrumentation">
+      <EntityTypeMapping TypeName="UOP_YES1QModel.YES_Instrumentation">
+        <MappingFragment StoreEntitySet="YES_Instrumentation">
+          <ScalarProperty Name="ELAPSED_TIME" ColumnName="ELAPSED_TIME" />
+          <ScalarProperty Name="TASK" ColumnName="TASK" />
+          <ScalarProperty Name="TECHNOLOGY_CD" ColumnName="TECHNOLOGY_CD" />
+          <ScalarProperty Name="USER_CURRENT_REGION" ColumnName="USER_CURRENT_REGION" />
+          <ScalarProperty Name="EMPLOYEE_ID" ColumnName="EMPLOYEE_ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="YES_LOCATION">
+      <EntityTypeMapping TypeName="UOP_YES1QModel.YES_LOCATION">
+        <MappingFragment StoreEntitySet="YES_LOCATION">
+          <ScalarProperty Name="UPDATED_ON_DT" ColumnName="UPDATED_ON_DT" />
+          <ScalarProperty Name="UPDATED_BY_USER_ID" ColumnName="UPDATED_BY_USER_ID" />
+          <ScalarProperty Name="CREATED_ON_DT" ColumnName="CREATED_ON_DT" />
+          <ScalarProperty Name="CREATED_BY_USER_ID" ColumnName="CREATED_BY_USER_ID" />
+          <ScalarProperty Name="LOCATION_NM" ColumnName="LOCATION_NM" />
+          <ScalarProperty Name="LOCATION_ID_SQ" ColumnName="LOCATION_ID_SQ" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="YES_LOG_TIME">
+      <EntityTypeMapping TypeName="UOP_YES1QModel.YES_LOG_TIME">
+        <MappingFragment StoreEntitySet="YES_LOG_TIME">
+          <ScalarProperty Name="LOGGED_OUT_TM" ColumnName="LOGGED_OUT_TM" />
+          <ScalarProperty Name="LOGGED_IN_TM" ColumnName="LOGGED_IN_TM" />
+          <ScalarProperty Name="TECHNOLOGY_CD" ColumnName="TECHNOLOGY_CD" />
+          <ScalarProperty Name="EMPLOYEE_ID" ColumnName="EMPLOYEE_ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <FunctionImportMapping FunctionImportName="f_Test_Procedure_try6" FunctionName="UOP_YES1QModel.Store.f_Test_Procedure_try6">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="UOP_YES1QModel.f_Test_Procedure_try6_Result">
+          <ScalarProperty Name="REs" ColumnName="REs" />
+          <ScalarProperty Name="USER_CURRENT_REGION" ColumnName="USER_CURRENT_REGION" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="f_Test_Procedure_Region" FunctionName="UOP_YES1QModel.Store.f_Test_Procedure_Region" />
+    <FunctionImportMapping FunctionImportName="SP_Estimate_common1" FunctionName="UOP_YES1QModel.Store.SP_Estimate_common1">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="UOP_YES1QModel.SP_Estimate_common1_Result">
+          <ScalarProperty Name="year" ColumnName="year" />
+          <ScalarProperty Name="month" ColumnName="month" />
+          <ScalarProperty Name="cases" ColumnName="cases" />
+          <ScalarProperty Name="total_hours" ColumnName="total_hours" />
+          <ScalarProperty Name="other_hours" ColumnName="other_hours" />
+          <ScalarProperty Name="average" ColumnName="average" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="Report_sp" FunctionName="UOP_YES1QModel.Store.Report_sp">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="UOP_YES1QModel.Report_sp_Result">
+          <ScalarProperty Name="ESTIMATE_ID_SQ" ColumnName="ESTIMATE_ID_SQ" />
+          <ScalarProperty Name="REQUEST_ESTIMATE_STATUS_CD" ColumnName="REQUEST_ESTIMATE_STATUS_CD" />
+          <ScalarProperty Name="CREATED_ON_Date" ColumnName="CREATED_ON_Date" />
+          <ScalarProperty Name="LAST_UPDATED" ColumnName="LAST_UPDATED" />
+          <ScalarProperty Name="CUSTOMER_NM" ColumnName="CUSTOMER_NM" />
+          <ScalarProperty Name="LOCATION_NM" ColumnName="LOCATION_NM" />
+          <ScalarProperty Name="DISPLAY_NM" ColumnName="DISPLAY_NM" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="Report_sp1" FunctionName="UOP_YES1QModel.Store.Report_sp1">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="UOP_YES1QModel.Report_sp1_Result">
+          <ScalarProperty Name="ESTIMATE_ID_SQ" ColumnName="ESTIMATE_ID_SQ" />
+          <ScalarProperty Name="REQUEST_ESTIMATE_STATUS_CD" ColumnName="REQUEST_ESTIMATE_STATUS_CD" />
+          <ScalarProperty Name="CREATED_ON_Date" ColumnName="CREATED_ON_Date" />
+          <ScalarProperty Name="LAST_UPDATED" ColumnName="LAST_UPDATED" />
+          <ScalarProperty Name="CUSTOMER_NM" ColumnName="CUSTOMER_NM" />
+          <ScalarProperty Name="Another_updated" ColumnName="Another_updated" />
+          <ScalarProperty Name="LOCATION_NM" ColumnName="LOCATION_NM" />
+          <ScalarProperty Name="DISPLAY_NM" ColumnName="DISPLAY_NM" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="Report_sp_final" FunctionName="UOP_YES1QModel.Store.Report_sp_final">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="UOP_YES1QModel.Report_sp_final_Result">
+          <ScalarProperty Name="ESTIMATE_ID_SQ" ColumnName="ESTIMATE_ID_SQ" />
+          <ScalarProperty Name="REQUEST_ESTIMATE_STATUS_CD" ColumnName="REQUEST_ESTIMATE_STATUS_CD" />
+          <ScalarProperty Name="CREATED_ON_Date" ColumnName="CREATED_ON_Date" />
+          <ScalarProperty Name="CUSTOMER_NM" ColumnName="CUSTOMER_NM" />
+          <ScalarProperty Name="LAST_UPDATED" ColumnName="LAST_UPDATED" />
+          <ScalarProperty Name="LOCATION_NM" ColumnName="LOCATION_NM" />
+          <ScalarProperty Name="DISPLAY_NM" ColumnName="DISPLAY_NM" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="Dashboard_MonthlyReport_SP" FunctionName="UOP_YES1QModel.Store.Dashboard_MonthlyReport_SP">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="UOP_YES1QModel.Dashboard_MonthlyReport_SP_Result">
+          <ScalarProperty Name="year" ColumnName="year" />
+          <ScalarProperty Name="month" ColumnName="month" />
+          <ScalarProperty Name="cases" ColumnName="cases" />
+          <ScalarProperty Name="total_hours" ColumnName="total_hours" />
+          <ScalarProperty Name="other_hours" ColumnName="other_hours" />
+          <ScalarProperty Name="average" ColumnName="average" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="Dashboard_EstimatorReport_SP" FunctionName="UOP_YES1QModel.Store.Dashboard_EstimatorReport_SP">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="UOP_YES1QModel.Dashboard_EstimatorReport_SP_Result">
+          <ScalarProperty Name="DISPLAY_NM" ColumnName="DISPLAY_NM" />
+          <ScalarProperty Name="cases" ColumnName="cases" />
+          <ScalarProperty Name="estimated_hours" ColumnName="estimated_hours" />
+          <ScalarProperty Name="other_hours" ColumnName="other_hours" />
+          <ScalarProperty Name="total_hours" ColumnName="total_hours" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="Dashboard_AllEstmates_SP" FunctionName="UOP_YES1QModel.Store.Dashboard_AllEstmates_SP">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="UOP_YES1QModel.Dashboard_AllEstmates_SP_Result1">
+          <ScalarProperty Name="ESTIMATE_ID_SQ" ColumnName="ESTIMATE_ID_SQ" />
+          <ScalarProperty Name="REQUEST_ESTIMATE_STATUS_CD" ColumnName="REQUEST_ESTIMATE_STATUS_CD" />
+          <ScalarProperty Name="CREATED_ON_Date" ColumnName="CREATED_ON_Date" />
+          <ScalarProperty Name="CUSTOMER_NM" ColumnName="CUSTOMER_NM" />
+          <ScalarProperty Name="LAST_UPDATED" ColumnName="LAST_UPDATED" />
+          <ScalarProperty Name="PURPOSE_CD" ColumnName="PURPOSE_CD" />
+          <ScalarProperty Name="LOCATION_NM" ColumnName="LOCATION_NM" />
+          <ScalarProperty Name="DISPLAY_NM" ColumnName="DISPLAY_NM" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="Dashboard_MonthlyReport_SP1" FunctionName="UOP_YES1QModel.Store.Dashboard_MonthlyReport_SP1">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="UOP_YES1QModel.Dashboard_MonthlyReport_SP1_Result">
+          <ScalarProperty Name="year" ColumnName="year" />
+          <ScalarProperty Name="month" ColumnName="month" />
+          <ScalarProperty Name="cases" ColumnName="cases" />
+          <ScalarProperty Name="total_hours" ColumnName="total_hours" />
+          <ScalarProperty Name="other_hours" ColumnName="other_hours" />
+          <ScalarProperty Name="average" ColumnName="average" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="DASHBOARD_CHART_ALLTECH_SP" FunctionName="UOP_YES1QModel.Store.DASHBOARD_CHART_ALLTECH_SP">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="UOP_YES1QModel.DASHBOARD_CHART_ALLTECH_SP_Result">
+          <ScalarProperty Name="time1" ColumnName="time1" />
+          <ScalarProperty Name="region" ColumnName="region" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+  </EntityContainerMapping>
+</Mapping>

@@ -1,0 +1,261 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="ExperimentModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Estimate_Common">
+          <Key>
+            <PropertyRef Name="Estimate_Id" />
+          </Key>
+          <Property Name="Estimate_Id" Type="int" Nullable="false" />
+          <Property Name="Employee_Id" Type="int" Nullable="false" />
+          <Property Name="Technology_Name" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="Region" Type="varchar" MaxLength="30" Nullable="false" />
+          <Property Name="Creation_date" Type="date" Nullable="false" />
+          <Property Name="Estimate_Status" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="Finish_date" Type="date" />
+        </EntityType>
+        <EntityType Name="Maps">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" />
+          <Property Name="lat" Type="float" Nullable="false" />
+          <Property Name="long" Type="float" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Performance">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" />
+          <Property Name="e.Id" Type="int" Nullable="false" />
+          <Property Name="Technology_name" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Region" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="Operation_name" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="Time_Taken" Type="float" Nullable="false" />
+        </EntityType>
+        <EntityType Name="USER_REGIONS">
+          <Key>
+            <PropertyRef Name="EMPLOYEE_ID" />
+          </Key>
+          <Property Name="EMPLOYEE_ID" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="REGION" Type="varchar" MaxLength="30" Nullable="false" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'D:\USERS\H224169\DOCUMENTS\EXPERIMENT.MDF.dbo.USER_REGIONS1' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="USER_REGIONS1">
+          <Key>
+            <PropertyRef Name="EMPLOYEE_ID" />
+            <PropertyRef Name="LOCATION_ID" />
+            <PropertyRef Name="REGION" />
+          </Key>
+          <Property Name="EMPLOYEE_ID" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="LOCATION_ID" Type="int" Nullable="false" />
+          <Property Name="REGION" Type="varchar" MaxLength="100" Nullable="false" />
+        </EntityType>
+        <EntityType Name="WebSites">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" />
+          <Property Name="Name" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <Function Name="f_Test_Emp" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" StoreFunctionName="_Test_Emp">
+          <Parameter Name="param1" Type="int" Mode="In" />
+        </Function>
+        <Function Name="f_Test_Estimate" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" StoreFunctionName="_Test_Estimate">
+          <Parameter Name="param1" Type="int" Mode="In" />
+        </Function>
+        <Function Name="USER_REGION" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="eid" Type="varchar" Mode="In" />
+          <Parameter Name="region" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="USER_REGION1" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="eid" Type="varchar" Mode="In" />
+          <Parameter Name="locate" Type="int" Mode="In" />
+          <Parameter Name="region" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="USER_REGIONS_SP" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="eid" Type="varchar" Mode="In" />
+          <Parameter Name="region" Type="varchar" Mode="In" />
+        </Function>
+        <EntityContainer Name="ExperimentModelStoreContainer">
+          <EntitySet Name="Estimate_Common" EntityType="Self.Estimate_Common" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Maps" EntityType="Self.Maps" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Performance" EntityType="Self.Performance" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="USER_REGIONS" EntityType="Self.USER_REGIONS" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="WebSites" EntityType="Self.WebSites" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="USER_REGIONS1" EntityType="Self.USER_REGIONS1" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [USER_REGIONS1].[EMPLOYEE_ID] AS [EMPLOYEE_ID], 
+    [USER_REGIONS1].[LOCATION_ID] AS [LOCATION_ID], 
+    [USER_REGIONS1].[REGION] AS [REGION]
+    FROM [dbo].[USER_REGIONS1] AS [USER_REGIONS1]</DefiningQuery>
+          </EntitySet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="ExperimentModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Estimate_Common">
+          <Key>
+            <PropertyRef Name="Estimate_Id" />
+          </Key>
+          <Property Name="Estimate_Id" Type="Int32" Nullable="false" />
+          <Property Name="Employee_Id" Type="Int32" Nullable="false" />
+          <Property Name="Technology_Name" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Region" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Creation_date" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="Estimate_Status" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Finish_date" Type="DateTime" Precision="0" />
+        </EntityType>
+        <EntityType Name="Map">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" />
+          <Property Name="lat" Type="Double" Nullable="false" />
+          <Property Name="long" Type="Double" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Performance">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" />
+          <Property Name="e_Id" Type="Int32" Nullable="false" />
+          <Property Name="Technology_name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Region" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Operation_name" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Time_Taken" Type="Double" Nullable="false" />
+        </EntityType>
+        <EntityType Name="WebSite">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+        </EntityType>
+        <EntityContainer Name="ExperimentEntities111" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Estimate_Common" EntityType="Self.Estimate_Common" />
+          <EntitySet Name="Maps" EntityType="Self.Map" />
+          <EntitySet Name="Performances" EntityType="Self.Performance" />
+          <EntitySet Name="WebSites" EntityType="Self.WebSite" />
+          <FunctionImport Name="f_Test_Emp" ReturnType="Collection(Int32)">
+          <Parameter Name="param1" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="f_Test_Estimate" ReturnType="Collection(Int32)">
+          <Parameter Name="param1" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="USER_REGION">
+            <Parameter Name="eid" Mode="In" Type="String" />
+            <Parameter Name="region" Mode="In" Type="String" />
+          </FunctionImport>
+          <EntitySet Name="USER_REGIONS" EntityType="ExperimentModel.USER_REGIONS" />
+          <FunctionImport Name="USER_REGIONS_SP">
+            <Parameter Name="eid" Mode="In" Type="String" />
+            <Parameter Name="region" Mode="In" Type="String" />
+          </FunctionImport>
+        </EntityContainer>
+        <EntityType Name="USER_REGIONS">
+          <Key>
+            <PropertyRef Name="EMPLOYEE_ID" />
+          </Key>
+          <Property Name="EMPLOYEE_ID" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="REGION" Type="String" Nullable="false" MaxLength="30" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="USER_REGIONS1">
+          <Key>
+            <PropertyRef Name="EMPLOYEE_ID" />
+            <PropertyRef Name="LOCATION_ID" />
+            <PropertyRef Name="REGION" />
+          </Key>
+          <Property Name="EMPLOYEE_ID" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="LOCATION_ID" Type="Int32" Nullable="false" />
+          <Property Name="REGION" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+        </EntityType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="ExperimentModelStoreContainer" CdmEntityContainer="ExperimentEntities111">
+          <EntitySetMapping Name="Estimate_Common">
+            <EntityTypeMapping TypeName="ExperimentModel.Estimate_Common">
+              <MappingFragment StoreEntitySet="Estimate_Common">
+                <ScalarProperty Name="Estimate_Id" ColumnName="Estimate_Id" />
+                <ScalarProperty Name="Employee_Id" ColumnName="Employee_Id" />
+                <ScalarProperty Name="Technology_Name" ColumnName="Technology_Name" />
+                <ScalarProperty Name="Region" ColumnName="Region" />
+                <ScalarProperty Name="Creation_date" ColumnName="Creation_date" />
+                <ScalarProperty Name="Estimate_Status" ColumnName="Estimate_Status" />
+                <ScalarProperty Name="Finish_date" ColumnName="Finish_date" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Maps">
+            <EntityTypeMapping TypeName="ExperimentModel.Map">
+              <MappingFragment StoreEntitySet="Maps">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="lat" ColumnName="lat" />
+                <ScalarProperty Name="long" ColumnName="long" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Performances">
+            <EntityTypeMapping TypeName="ExperimentModel.Performance">
+              <MappingFragment StoreEntitySet="Performance">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="e_Id" ColumnName="e.Id" />
+                <ScalarProperty Name="Technology_name" ColumnName="Technology_name" />
+                <ScalarProperty Name="Region" ColumnName="Region" />
+                <ScalarProperty Name="Operation_name" ColumnName="Operation_name" />
+                <ScalarProperty Name="Time_Taken" ColumnName="Time_Taken" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="WebSites">
+            <EntityTypeMapping TypeName="ExperimentModel.WebSite">
+              <MappingFragment StoreEntitySet="WebSites">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="f_Test_Emp" FunctionName="ExperimentModel.Store.f_Test_Emp" />
+          <FunctionImportMapping FunctionImportName="f_Test_Estimate" FunctionName="ExperimentModel.Store.f_Test_Estimate" />
+          <FunctionImportMapping FunctionImportName="USER_REGION" FunctionName="ExperimentModel.Store.USER_REGION" />
+          <EntitySetMapping Name="USER_REGIONS">
+            <EntityTypeMapping TypeName="ExperimentModel.USER_REGIONS">
+              <MappingFragment StoreEntitySet="USER_REGIONS">
+                <ScalarProperty Name="REGION" ColumnName="REGION" />
+                <ScalarProperty Name="EMPLOYEE_ID" ColumnName="EMPLOYEE_ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="USER_REGIONS_SP" FunctionName="ExperimentModel.Store.USER_REGIONS_SP" />
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

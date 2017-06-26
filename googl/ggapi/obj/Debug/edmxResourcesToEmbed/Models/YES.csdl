@@ -1,0 +1,292 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="UOP_YES1QModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="YES_APPLICATION_USER">
+    <Key>
+      <PropertyRef Name="EMPLOYEE_ID" />
+    </Key>
+    <Property Name="EMPLOYEE_ID" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="FIRST_NM" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="MIDDLE_NM" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="LAST_NM" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="EMAIL_ADDR" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="DISPLAY_NM" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="ACTIVE_IND" Type="String" MaxLength="1" FixedLength="true" Unicode="false" Nullable="false" />
+    <Property Name="CREATED_ON_DT" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="CREATED_BY_USER_ID" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="UPDATED_ON_DT" Type="DateTime" Precision="3" />
+    <Property Name="UPDATED_BY_USER_ID" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="YES_ESTIMATE_COMMON" Relationship="UOP_YES1QModel.REFHYES_APPLICATION_USER7" FromRole="YES_APPLICATION_USER" ToRole="YES_ESTIMATE_COMMON" />
+    <NavigationProperty Name="YES_LOG_TIME" Relationship="UOP_YES1QModel.REFHYES_APPLICATION_USER10" FromRole="YES_APPLICATION_USER" ToRole="YES_LOG_TIME" />
+    <NavigationProperty Name="YES_LOG_TIME1" Relationship="UOP_YES1QModel.REFHYES_APPLICATION_USER11" FromRole="YES_APPLICATION_USER" ToRole="YES_LOG_TIME" />
+    <NavigationProperty Name="YES_LOG_TIME2" Relationship="UOP_YES1QModel.REFHYES_APPLICATION_USER12" FromRole="YES_APPLICATION_USER" ToRole="YES_LOG_TIME" />
+  </EntityType>
+  <EntityContainer Name="UOP_YES1QEntities1" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="YES_APPLICATION_USER" EntityType="Self.YES_APPLICATION_USER" />
+    <EntitySet Name="YES_ESTIMATE_COMMON" EntityType="UOP_YES1QModel.YES_ESTIMATE_COMMON" />
+    <AssociationSet Name="REFHYES_APPLICATION_USER7" Association="UOP_YES1QModel.REFHYES_APPLICATION_USER7">
+      <End Role="YES_APPLICATION_USER" EntitySet="YES_APPLICATION_USER" />
+      <End Role="YES_ESTIMATE_COMMON" EntitySet="YES_ESTIMATE_COMMON" />
+    </AssociationSet>
+    <EntitySet Name="YES_CUSTOMER" EntityType="UOP_YES1QModel.YES_CUSTOMER" />
+    <EntitySet Name="YES_Instrumentation" EntityType="UOP_YES1QModel.YES_Instrumentation" />
+    <EntitySet Name="YES_LOCATION" EntityType="UOP_YES1QModel.YES_LOCATION" />
+    <EntitySet Name="YES_LOG_TIME" EntityType="UOP_YES1QModel.YES_LOG_TIME" />
+    <AssociationSet Name="REFHYES_APPLICATION_USER10" Association="UOP_YES1QModel.REFHYES_APPLICATION_USER10">
+      <End Role="YES_APPLICATION_USER" EntitySet="YES_APPLICATION_USER" />
+      <End Role="YES_LOG_TIME" EntitySet="YES_LOG_TIME" />
+    </AssociationSet>
+    <AssociationSet Name="REFHYES_APPLICATION_USER11" Association="UOP_YES1QModel.REFHYES_APPLICATION_USER11">
+      <End Role="YES_APPLICATION_USER" EntitySet="YES_APPLICATION_USER" />
+      <End Role="YES_LOG_TIME" EntitySet="YES_LOG_TIME" />
+    </AssociationSet>
+    <AssociationSet Name="REFHYES_APPLICATION_USER12" Association="UOP_YES1QModel.REFHYES_APPLICATION_USER12">
+      <End Role="YES_APPLICATION_USER" EntitySet="YES_APPLICATION_USER" />
+      <End Role="YES_LOG_TIME" EntitySet="YES_LOG_TIME" />
+    </AssociationSet>
+    <FunctionImport Name="f_Test_Procedure_try6" ReturnType="Collection(UOP_YES1QModel.f_Test_Procedure_try6_Result)">
+      <Parameter Name="param1" Mode="In" Type="String" />
+      <Parameter Name="param3" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="f_Test_Procedure_Region" ReturnType="Collection(String)" />
+    <FunctionImport Name="SP_Estimate_common1" ReturnType="Collection(UOP_YES1QModel.SP_Estimate_common1_Result)" />
+    <FunctionImport Name="Report_sp" ReturnType="Collection(UOP_YES1QModel.Report_sp_Result)" />
+    <FunctionImport Name="Report_sp1" ReturnType="Collection(UOP_YES1QModel.Report_sp1_Result)" />
+    <FunctionImport Name="Report_sp_final" ReturnType="Collection(UOP_YES1QModel.Report_sp_final_Result)" />
+    <FunctionImport Name="Dashboard_MonthlyReport_SP" ReturnType="Collection(UOP_YES1QModel.Dashboard_MonthlyReport_SP_Result)">
+      <Parameter Name="time" Mode="In" Type="Int32" />
+      <Parameter Name="tech" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="Dashboard_EstimatorReport_SP" ReturnType="Collection(UOP_YES1QModel.Dashboard_EstimatorReport_SP_Result)">
+      <Parameter Name="time" Mode="In" Type="Int32" />
+      <Parameter Name="tech" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="Dashboard_AllEstmates_SP" ReturnType="Collection(UOP_YES1QModel.Dashboard_AllEstmates_SP_Result1)">
+      <Parameter Name="tech" Mode="In" Type="String" />
+      <Parameter Name="time" Mode="In" Type="Int32" />
+      <Parameter Name="status" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="Dashboard_MonthlyReport_SP1" ReturnType="Collection(UOP_YES1QModel.Dashboard_MonthlyReport_SP1_Result)">
+      <Parameter Name="time1" Mode="In" Type="DateTime" />
+      <Parameter Name="time2" Mode="In" Type="DateTime" />
+      <Parameter Name="tech" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="DASHBOARD_CHART_ALLTECH_SP" ReturnType="Collection(UOP_YES1QModel.DASHBOARD_CHART_ALLTECH_SP_Result)" />
+  </EntityContainer>
+  <EntityType Name="YES_ESTIMATE_COMMON">
+    <Key>
+      <PropertyRef Name="ESTIMATE_ID_SQ" />
+    </Key>
+    <Property Name="ESTIMATE_ID_SQ" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="REQUEST_ID" Type="Int32" />
+    <Property Name="ESTIMATION_DESC" Type="String" MaxLength="2000" FixedLength="false" Unicode="false" />
+    <Property Name="CUSTOMER_ID" Type="Int32" />
+    <Property Name="LOCATION_ID" Type="Int32" />
+    <Property Name="TECHNOLOGY_CD" Type="String" MaxLength="5" FixedLength="false" Unicode="false" />
+    <Property Name="ESTIMATED_BY_ID" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="YE_REVISION_IND" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+    <Property Name="ESTIMATE_ASSIGNED_DT" Type="DateTime" Precision="3" />
+    <Property Name="ESTIMATE_ISSUE_DT" Type="DateTime" Precision="3" />
+    <Property Name="REQUEST_ESTIMATE_STATUS_CD" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="false" />
+    <Property Name="ESTIMATE_HOUR_PRD" Type="Decimal" Precision="7" Scale="2" />
+    <Property Name="OTHER_HOUR_PRD" Type="Decimal" Precision="7" Scale="2" />
+    <Property Name="DESIGN_BASIS_IND" Type="String" Nullable="false" MaxLength="1" FixedLength="true" Unicode="false" />
+    <Property Name="ESTIMATE_TO_CUSTOMER_IND" Type="String" Nullable="false" MaxLength="1" FixedLength="true" Unicode="false" />
+    <Property Name="DELETE_IND" Type="String" Nullable="false" MaxLength="1" FixedLength="false" Unicode="false" />
+    <Property Name="UNIT_PREFERENCE_CD" Type="String" Nullable="false" MaxLength="2" FixedLength="false" Unicode="false" />
+    <Property Name="PURPOSE_CD" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="false" />
+    <Property Name="CREATED_BY_USER_ID" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="CREATED_ON_DT" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="UPDATED_BY_USER_ID" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="UPDATED_ON_DT" Type="DateTime" Precision="3" />
+    <Property Name="SYNC_BY_USER_ID" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="SYNC_ON_DT" Type="DateTime" Precision="3" />
+    <Property Name="BASE_CASE_IND" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
+    <Property Name="LPI_TECHO_EST_ID" Type="Int32" />
+    <NavigationProperty Name="YES_APPLICATION_USER" Relationship="UOP_YES1QModel.REFHYES_APPLICATION_USER7" FromRole="YES_ESTIMATE_COMMON" ToRole="YES_APPLICATION_USER" />
+  </EntityType>
+  <Association Name="REFHYES_APPLICATION_USER7">
+    <End Type="UOP_YES1QModel.YES_APPLICATION_USER" Role="YES_APPLICATION_USER" Multiplicity="1" />
+    <End Type="UOP_YES1QModel.YES_ESTIMATE_COMMON" Role="YES_ESTIMATE_COMMON" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="YES_APPLICATION_USER">
+        <PropertyRef Name="EMPLOYEE_ID" />
+      </Principal>
+      <Dependent Role="YES_ESTIMATE_COMMON">
+        <PropertyRef Name="ESTIMATED_BY_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityType Name="YES_CUSTOMER">
+    <Key>
+      <PropertyRef Name="CUSTOMER_ID_SQ" />
+    </Key>
+    <Property Name="CUSTOMER_ID_SQ" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="CUSTOMER_NM" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="CUSTOMER_EMAIL_ID" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="CONTACT_NUM" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="CREATED_BY_USER_ID" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="CREATED_ON_DT" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="UPDATED_BY_USER_ID" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="UPDATED_ON_DT" Type="DateTime" Precision="3" />
+  </EntityType>
+  <EntityType Name="YES_Instrumentation">
+    <Key>
+      <PropertyRef Name="EMPLOYEE_ID" />
+      <PropertyRef Name="TECHNOLOGY_CD" />
+      <PropertyRef Name="TASK" />
+    </Key>
+    <Property Name="EMPLOYEE_ID" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="true" />
+    <Property Name="USER_CURRENT_REGION" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+    <Property Name="TECHNOLOGY_CD" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="true" />
+    <Property Name="TASK" Type="String" Nullable="false" MaxLength="60" FixedLength="false" Unicode="true" />
+    <Property Name="ELAPSED_TIME" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="YES_LOCATION">
+    <Key>
+      <PropertyRef Name="LOCATION_ID_SQ" />
+    </Key>
+    <Property Name="LOCATION_ID_SQ" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="LOCATION_NM" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="CREATED_BY_USER_ID" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="CREATED_ON_DT" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="UPDATED_BY_USER_ID" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="UPDATED_ON_DT" Type="DateTime" Precision="3" />
+  </EntityType>
+  <EntityType Name="YES_LOG_TIME">
+    <Key>
+      <PropertyRef Name="EMPLOYEE_ID" />
+      <PropertyRef Name="TECHNOLOGY_CD" />
+      <PropertyRef Name="LOGGED_IN_TM" />
+    </Key>
+    <Property Name="EMPLOYEE_ID" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="TECHNOLOGY_CD" Type="String" Nullable="false" MaxLength="5" FixedLength="false" Unicode="false" />
+    <Property Name="LOGGED_IN_TM" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="LOGGED_OUT_TM" Type="DateTime" Precision="3" />
+    <NavigationProperty Name="YES_APPLICATION_USER" Relationship="UOP_YES1QModel.REFHYES_APPLICATION_USER10" FromRole="YES_LOG_TIME" ToRole="YES_APPLICATION_USER" />
+    <NavigationProperty Name="YES_APPLICATION_USER1" Relationship="UOP_YES1QModel.REFHYES_APPLICATION_USER11" FromRole="YES_LOG_TIME" ToRole="YES_APPLICATION_USER" />
+    <NavigationProperty Name="YES_APPLICATION_USER2" Relationship="UOP_YES1QModel.REFHYES_APPLICATION_USER12" FromRole="YES_LOG_TIME" ToRole="YES_APPLICATION_USER" />
+  </EntityType>
+  <Association Name="REFHYES_APPLICATION_USER10">
+    <End Type="UOP_YES1QModel.YES_APPLICATION_USER" Role="YES_APPLICATION_USER" Multiplicity="1" />
+    <End Type="UOP_YES1QModel.YES_LOG_TIME" Role="YES_LOG_TIME" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="YES_APPLICATION_USER">
+        <PropertyRef Name="EMPLOYEE_ID" />
+      </Principal>
+      <Dependent Role="YES_LOG_TIME">
+        <PropertyRef Name="EMPLOYEE_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="REFHYES_APPLICATION_USER11">
+    <End Type="UOP_YES1QModel.YES_APPLICATION_USER" Role="YES_APPLICATION_USER" Multiplicity="1" />
+    <End Type="UOP_YES1QModel.YES_LOG_TIME" Role="YES_LOG_TIME" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="YES_APPLICATION_USER">
+        <PropertyRef Name="EMPLOYEE_ID" />
+      </Principal>
+      <Dependent Role="YES_LOG_TIME">
+        <PropertyRef Name="EMPLOYEE_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="REFHYES_APPLICATION_USER12">
+    <End Type="UOP_YES1QModel.YES_APPLICATION_USER" Role="YES_APPLICATION_USER" Multiplicity="1" />
+    <End Type="UOP_YES1QModel.YES_LOG_TIME" Role="YES_LOG_TIME" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="YES_APPLICATION_USER">
+        <PropertyRef Name="EMPLOYEE_ID" />
+      </Principal>
+      <Dependent Role="YES_LOG_TIME">
+        <PropertyRef Name="EMPLOYEE_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <ComplexType Name="f_Test_Procedure_try6_Result">
+    <Property Type="Double" Name="REs" Nullable="true" />
+    <Property Type="String" Name="USER_CURRENT_REGION" Nullable="true" MaxLength="30" />
+  </ComplexType>
+  <ComplexType Name="SP_Estimate_common1_Result">
+    <Property Type="Int32" Name="year" Nullable="true" />
+    <Property Type="String" Name="month" Nullable="true" MaxLength="30" />
+    <Property Type="Int32" Name="cases" Nullable="true" />
+    <Property Type="Decimal" Name="total_hours" Nullable="true" Precision="38" Scale="2" />
+    <Property Type="Decimal" Name="other_hours" Nullable="false" Precision="38" Scale="2" />
+    <Property Type="Decimal" Name="average" Nullable="true" Precision="36" Scale="2" />
+  </ComplexType>
+  <ComplexType Name="Report_sp_Result">
+    <Property Type="Int32" Name="ESTIMATE_ID_SQ" Nullable="false" />
+    <Property Type="String" Name="REQUEST_ESTIMATE_STATUS_CD" Nullable="false" MaxLength="10" />
+    <Property Type="DateTime" Name="CREATED_ON_Date" Nullable="true" />
+    <Property Type="DateTime" Name="LAST_UPDATED" Nullable="true" />
+    <Property Type="String" Name="CUSTOMER_NM" Nullable="false" MaxLength="100" />
+    <Property Type="String" Name="LOCATION_NM" Nullable="false" MaxLength="100" />
+    <Property Type="String" Name="DISPLAY_NM" Nullable="true" MaxLength="50" />
+  </ComplexType>
+  <ComplexType Name="Report_sp1_Result">
+    <Property Type="Int32" Name="ESTIMATE_ID_SQ" Nullable="false" />
+    <Property Type="String" Name="REQUEST_ESTIMATE_STATUS_CD" Nullable="false" MaxLength="10" />
+    <Property Type="DateTime" Name="CREATED_ON_Date" Nullable="true" />
+    <Property Type="DateTime" Name="LAST_UPDATED" Nullable="true" />
+    <Property Type="String" Name="CUSTOMER_NM" Nullable="false" MaxLength="100" />
+    <Property Type="String" Name="Another_updated" Nullable="true" MaxLength="4000" />
+    <Property Type="String" Name="LOCATION_NM" Nullable="false" MaxLength="100" />
+    <Property Type="String" Name="DISPLAY_NM" Nullable="true" MaxLength="50" />
+  </ComplexType>
+  <ComplexType Name="Report_sp_final_Result">
+    <Property Type="Int32" Name="ESTIMATE_ID_SQ" Nullable="false" />
+    <Property Type="String" Name="REQUEST_ESTIMATE_STATUS_CD" Nullable="false" MaxLength="10" />
+    <Property Type="String" Name="CREATED_ON_Date" Nullable="true" MaxLength="4000" />
+    <Property Type="String" Name="CUSTOMER_NM" Nullable="false" MaxLength="100" />
+    <Property Type="String" Name="LAST_UPDATED" Nullable="true" MaxLength="4000" />
+    <Property Type="String" Name="LOCATION_NM" Nullable="false" MaxLength="100" />
+    <Property Type="String" Name="DISPLAY_NM" Nullable="true" MaxLength="50" />
+  </ComplexType>
+  <ComplexType Name="Dashboard_AllEstmates_SP_Result">
+    <Property Type="Int32" Name="ESTIMATE_ID_SQ" Nullable="false" />
+    <Property Type="String" Name="REQUEST_ESTIMATE_STATUS_CD" Nullable="false" MaxLength="10" />
+    <Property Type="String" Name="CREATED_ON_Date" Nullable="true" MaxLength="4000" />
+    <Property Type="String" Name="CUSTOMER_NM" Nullable="false" MaxLength="100" />
+    <Property Type="String" Name="LAST_UPDATED" Nullable="false" MaxLength="4000" />
+    <Property Type="String" Name="PURPOSE_CD" Nullable="false" MaxLength="10" />
+    <Property Type="String" Name="LOCATION_NM" Nullable="false" MaxLength="100" />
+    <Property Type="String" Name="DISPLAY_NM" Nullable="true" MaxLength="50" />
+  </ComplexType>
+  <ComplexType Name="Dashboard_MonthlyReport_SP_Result">
+    <Property Type="Int32" Name="year" Nullable="true" />
+    <Property Type="String" Name="month" Nullable="true" MaxLength="30" />
+    <Property Type="Int32" Name="cases" Nullable="true" />
+    <Property Type="Decimal" Name="total_hours" Nullable="true" Precision="38" Scale="2" />
+    <Property Type="Decimal" Name="other_hours" Nullable="false" Precision="38" Scale="2" />
+    <Property Type="Decimal" Name="average" Nullable="true" Precision="36" Scale="2" />
+  </ComplexType>
+  <ComplexType Name="Dashboard_EstimatorReport_SP_Result">
+    <Property Type="String" Name="DISPLAY_NM" Nullable="true" MaxLength="50" />
+    <Property Type="Int32" Name="cases" Nullable="true" />
+    <Property Type="Decimal" Name="estimated_hours" Nullable="true" Precision="38" Scale="2" />
+    <Property Type="Decimal" Name="other_hours" Nullable="true" Precision="38" Scale="2" />
+    <Property Type="Decimal" Name="total_hours" Nullable="true" Precision="38" Scale="2" />
+  </ComplexType>
+  <ComplexType Name="Dashboard_AllEstmates_SP_Result1">
+    <Property Type="Int32" Name="ESTIMATE_ID_SQ" Nullable="false" />
+    <Property Type="String" Name="REQUEST_ESTIMATE_STATUS_CD" Nullable="false" MaxLength="10" />
+    <Property Type="String" Name="CREATED_ON_Date" Nullable="true" MaxLength="10" />
+    <Property Type="String" Name="CUSTOMER_NM" Nullable="false" MaxLength="100" />
+    <Property Type="String" Name="LAST_UPDATED" Nullable="false" MaxLength="10" />
+    <Property Type="String" Name="PURPOSE_CD" Nullable="false" MaxLength="10" />
+    <Property Type="String" Name="LOCATION_NM" Nullable="false" MaxLength="100" />
+    <Property Type="String" Name="DISPLAY_NM" Nullable="true" MaxLength="50" />
+  </ComplexType>
+  <ComplexType Name="Dashboard_MonthlyReport_SP1_Result">
+    <Property Type="Int32" Name="year" Nullable="true" />
+    <Property Type="String" Name="month" Nullable="true" MaxLength="30" />
+    <Property Type="Int32" Name="cases" Nullable="true" />
+    <Property Type="Decimal" Name="total_hours" Nullable="true" Precision="38" Scale="2" />
+    <Property Type="Decimal" Name="other_hours" Nullable="false" Precision="38" Scale="2" />
+    <Property Type="Decimal" Name="average" Nullable="true" Precision="36" Scale="2" />
+  </ComplexType>
+  <ComplexType Name="DASHBOARD_CHART_ALLTECH_SP_Result">
+    <Property Type="Double" Name="time1" Nullable="true" />
+    <Property Type="String" Name="region" Nullable="true" MaxLength="30" />
+  </ComplexType>
+</Schema>

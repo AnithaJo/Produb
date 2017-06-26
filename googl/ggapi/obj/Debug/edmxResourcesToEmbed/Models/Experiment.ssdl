@@ -1,0 +1,63 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="ExperimentModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="Estimate_Common">
+    <Key>
+      <PropertyRef Name="Estimate_Id" />
+    </Key>
+    <Property Name="Estimate_Id" Type="int" Nullable="false" />
+    <Property Name="Employee_Id" Type="int" Nullable="false" />
+    <Property Name="Technology_Name" Type="varchar" MaxLength="20" Nullable="false" />
+    <Property Name="Region" Type="varchar" MaxLength="30" Nullable="false" />
+    <Property Name="Creation_date" Type="date" Nullable="false" />
+    <Property Name="Estimate_Status" Type="varchar" MaxLength="20" Nullable="false" />
+    <Property Name="Finish_date" Type="date" />
+  </EntityType>
+  <EntityType Name="Maps">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" Nullable="false" />
+    <Property Name="lat" Type="float" Nullable="false" />
+    <Property Name="long" Type="float" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Performance">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" Nullable="false" />
+    <Property Name="e.Id" Type="int" Nullable="false" />
+    <Property Name="Technology_name" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="Region" Type="varchar" MaxLength="100" Nullable="false" />
+    <Property Name="Operation_name" Type="varchar" MaxLength="100" Nullable="false" />
+    <Property Name="Time_Taken" Type="float" Nullable="false" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6013: The table/view 'D:\USERS\H224169\DOCUMENTS\EXPERIMENT.MDF.dbo.REGION' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
+        <EntityType Name="REGION">
+          <Property Name="EMPLOYEE_ID" Type="varchar" MaxLength="10" />
+          <Property Name="REGION" Type="varchar" MaxLength="30" />
+        </EntityType>-->
+  <EntityType Name="WebSites">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" Nullable="false" />
+    <Property Name="Name" Type="varchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <Function Name="f_Test_Emp" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" StoreFunctionName="_Test_Emp">
+    <Parameter Name="param1" Type="int" Mode="In" />
+  </Function>
+  <Function Name="f_Test_Estimate" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" StoreFunctionName="_Test_Estimate">
+    <Parameter Name="param1" Type="int" Mode="In" />
+  </Function>
+  <Function Name="USER_REGION" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="eid" Type="varchar" Mode="In" />
+    <Parameter Name="region" Type="varchar" Mode="In" />
+  </Function>
+  <EntityContainer Name="ExperimentModelStoreContainer">
+    <EntitySet Name="Estimate_Common" EntityType="Self.Estimate_Common" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Maps" EntityType="Self.Maps" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Performance" EntityType="Self.Performance" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="WebSites" EntityType="Self.WebSites" Schema="dbo" store:Type="Tables" />
+  </EntityContainer>
+</Schema>

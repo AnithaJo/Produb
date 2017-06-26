@@ -1,0 +1,216 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="UOP_YES1QModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="YES_APPLICATION_USER">
+    <Key>
+      <PropertyRef Name="EMPLOYEE_ID" />
+    </Key>
+    <Property Name="EMPLOYEE_ID" Type="varchar" MaxLength="20" Nullable="false" />
+    <Property Name="FIRST_NM" Type="varchar" MaxLength="20" Nullable="false" />
+    <Property Name="MIDDLE_NM" Type="varchar" MaxLength="20" />
+    <Property Name="LAST_NM" Type="varchar" MaxLength="20" Nullable="false" />
+    <Property Name="EMAIL_ADDR" Type="varchar" MaxLength="100" />
+    <Property Name="DISPLAY_NM" Type="varchar" MaxLength="50" />
+    <Property Name="ACTIVE_IND" Type="char" MaxLength="1" Nullable="false" />
+    <Property Name="CREATED_ON_DT" Type="datetime" Nullable="false" />
+    <Property Name="CREATED_BY_USER_ID" Type="varchar" MaxLength="20" Nullable="false" />
+    <Property Name="UPDATED_ON_DT" Type="datetime" />
+    <Property Name="UPDATED_BY_USER_ID" Type="varchar" MaxLength="20" />
+  </EntityType>
+  <EntityType Name="YES_CUSTOMER">
+    <Key>
+      <PropertyRef Name="CUSTOMER_ID_SQ" />
+    </Key>
+    <Property Name="CUSTOMER_ID_SQ" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="CUSTOMER_NM" Type="varchar" MaxLength="100" Nullable="false" />
+    <Property Name="CUSTOMER_EMAIL_ID" Type="varchar" MaxLength="100" />
+    <Property Name="CONTACT_NUM" Type="varchar" MaxLength="50" />
+    <Property Name="CREATED_BY_USER_ID" Type="varchar" MaxLength="20" Nullable="false" />
+    <Property Name="CREATED_ON_DT" Type="datetime" Nullable="false" />
+    <Property Name="UPDATED_BY_USER_ID" Type="varchar" MaxLength="20" />
+    <Property Name="UPDATED_ON_DT" Type="datetime" />
+  </EntityType>
+  <EntityType Name="YES_ESTIMATE_COMMON">
+    <Key>
+      <PropertyRef Name="ESTIMATE_ID_SQ" />
+    </Key>
+    <Property Name="ESTIMATE_ID_SQ" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="REQUEST_ID" Type="int" />
+    <Property Name="ESTIMATION_DESC" Type="varchar" MaxLength="2000" />
+    <Property Name="CUSTOMER_ID" Type="int" />
+    <Property Name="LOCATION_ID" Type="int" />
+    <Property Name="TECHNOLOGY_CD" Type="varchar" MaxLength="5" />
+    <Property Name="ESTIMATED_BY_ID" Type="varchar" MaxLength="20" Nullable="false" />
+    <Property Name="YE_REVISION_IND" Type="char" MaxLength="1" />
+    <Property Name="ESTIMATE_ASSIGNED_DT" Type="datetime" />
+    <Property Name="ESTIMATE_ISSUE_DT" Type="datetime" />
+    <Property Name="REQUEST_ESTIMATE_STATUS_CD" Type="varchar" MaxLength="10" Nullable="false" />
+    <Property Name="ESTIMATE_HOUR_PRD" Type="numeric" Precision="7" Scale="2" />
+    <Property Name="OTHER_HOUR_PRD" Type="numeric" Precision="7" Scale="2" />
+    <Property Name="DESIGN_BASIS_IND" Type="char" MaxLength="1" Nullable="false" />
+    <Property Name="ESTIMATE_TO_CUSTOMER_IND" Type="char" MaxLength="1" Nullable="false" />
+    <Property Name="DELETE_IND" Type="varchar" MaxLength="1" Nullable="false" />
+    <Property Name="UNIT_PREFERENCE_CD" Type="varchar" MaxLength="2" Nullable="false" />
+    <Property Name="PURPOSE_CD" Type="varchar" MaxLength="10" Nullable="false" />
+    <Property Name="CREATED_BY_USER_ID" Type="varchar" MaxLength="20" Nullable="false" />
+    <Property Name="CREATED_ON_DT" Type="datetime" Nullable="false" />
+    <Property Name="UPDATED_BY_USER_ID" Type="varchar" MaxLength="20" />
+    <Property Name="UPDATED_ON_DT" Type="datetime" />
+    <Property Name="SYNC_BY_USER_ID" Type="varchar" MaxLength="20" />
+    <Property Name="SYNC_ON_DT" Type="datetime" />
+    <Property Name="BASE_CASE_IND" Type="varchar" MaxLength="1" />
+    <Property Name="LPI_TECHO_EST_ID" Type="int" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'UOP_YES1Q.dbo.YES_Instrumentation' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="YES_Instrumentation">
+    <Key>
+      <PropertyRef Name="EMPLOYEE_ID" />
+      <PropertyRef Name="TECHNOLOGY_CD" />
+      <PropertyRef Name="TASK" />
+    </Key>
+    <Property Name="EMPLOYEE_ID" Type="nvarchar" MaxLength="10" Nullable="false" />
+    <Property Name="USER_CURRENT_REGION" Type="nvarchar" MaxLength="30" />
+    <Property Name="TECHNOLOGY_CD" Type="nvarchar" MaxLength="10" Nullable="false" />
+    <Property Name="TASK" Type="nvarchar" MaxLength="60" Nullable="false" />
+    <Property Name="ELAPSED_TIME" Type="nvarchar" MaxLength="20" />
+  </EntityType>
+  <EntityType Name="YES_LOCATION">
+    <Key>
+      <PropertyRef Name="LOCATION_ID_SQ" />
+    </Key>
+    <Property Name="LOCATION_ID_SQ" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="LOCATION_NM" Type="varchar" MaxLength="100" Nullable="false" />
+    <Property Name="CREATED_BY_USER_ID" Type="varchar" MaxLength="20" Nullable="false" />
+    <Property Name="CREATED_ON_DT" Type="datetime" Nullable="false" />
+    <Property Name="UPDATED_BY_USER_ID" Type="varchar" MaxLength="20" />
+    <Property Name="UPDATED_ON_DT" Type="datetime" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'UOP_YES1Q.dbo.YES_LOG_TIME' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="YES_LOG_TIME">
+    <Key>
+      <PropertyRef Name="EMPLOYEE_ID" />
+      <PropertyRef Name="TECHNOLOGY_CD" />
+      <PropertyRef Name="LOGGED_IN_TM" />
+    </Key>
+    <Property Name="EMPLOYEE_ID" Type="varchar" MaxLength="20" Nullable="false" />
+    <Property Name="TECHNOLOGY_CD" Type="varchar" MaxLength="5" Nullable="false" />
+    <Property Name="LOGGED_IN_TM" Type="datetime" Nullable="false" />
+    <Property Name="LOGGED_OUT_TM" Type="datetime" />
+  </EntityType>
+  <Association Name="REFHYES_APPLICATION_USER10">
+    <End Role="YES_APPLICATION_USER" Type="Self.YES_APPLICATION_USER" Multiplicity="1" />
+    <End Role="YES_LOG_TIME" Type="Self.YES_LOG_TIME" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="YES_APPLICATION_USER">
+        <PropertyRef Name="EMPLOYEE_ID" />
+      </Principal>
+      <Dependent Role="YES_LOG_TIME">
+        <PropertyRef Name="EMPLOYEE_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="REFHYES_APPLICATION_USER11">
+    <End Role="YES_APPLICATION_USER" Type="Self.YES_APPLICATION_USER" Multiplicity="1" />
+    <End Role="YES_LOG_TIME" Type="Self.YES_LOG_TIME" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="YES_APPLICATION_USER">
+        <PropertyRef Name="EMPLOYEE_ID" />
+      </Principal>
+      <Dependent Role="YES_LOG_TIME">
+        <PropertyRef Name="EMPLOYEE_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="REFHYES_APPLICATION_USER12">
+    <End Role="YES_APPLICATION_USER" Type="Self.YES_APPLICATION_USER" Multiplicity="1" />
+    <End Role="YES_LOG_TIME" Type="Self.YES_LOG_TIME" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="YES_APPLICATION_USER">
+        <PropertyRef Name="EMPLOYEE_ID" />
+      </Principal>
+      <Dependent Role="YES_LOG_TIME">
+        <PropertyRef Name="EMPLOYEE_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="REFHYES_APPLICATION_USER7">
+    <End Role="YES_APPLICATION_USER" Type="Self.YES_APPLICATION_USER" Multiplicity="1" />
+    <End Role="YES_ESTIMATE_COMMON" Type="Self.YES_ESTIMATE_COMMON" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="YES_APPLICATION_USER">
+        <PropertyRef Name="EMPLOYEE_ID" />
+      </Principal>
+      <Dependent Role="YES_ESTIMATE_COMMON">
+        <PropertyRef Name="ESTIMATED_BY_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Function Name="f_Test_Procedure_Region" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" StoreFunctionName="_Test_Procedure_Region" />
+  <Function Name="f_Test_Procedure_try6" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" StoreFunctionName="_Test_Procedure_try6">
+    <Parameter Name="param1" Type="nvarchar" Mode="In" />
+    <Parameter Name="param3" Type="nvarchar" Mode="In" />
+  </Function>
+  <Function Name="Dashboard_AllEstmates_SP" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="tech" Type="varchar" Mode="In" />
+    <Parameter Name="time" Type="int" Mode="In" />
+    <Parameter Name="status" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="DASHBOARD_CHART_ALLTECH_SP" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="Dashboard_EstimatorReport_SP" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="time" Type="int" Mode="In" />
+    <Parameter Name="tech" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="Dashboard_MonthlyReport_SP" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="time" Type="int" Mode="In" />
+    <Parameter Name="tech" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="Dashboard_MonthlyReport_SP1" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="time1" Type="date" Mode="In" />
+    <Parameter Name="time2" Type="date" Mode="In" />
+    <Parameter Name="tech" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="Report_sp" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="Report_sp_final" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="Report_sp1" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="SP_Estimate_common1" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <EntityContainer Name="UOP_YES1QModelStoreContainer">
+    <EntitySet Name="YES_APPLICATION_USER" EntityType="Self.YES_APPLICATION_USER" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="YES_CUSTOMER" EntityType="Self.YES_CUSTOMER" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="YES_ESTIMATE_COMMON" EntityType="Self.YES_ESTIMATE_COMMON" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="YES_LOCATION" EntityType="Self.YES_LOCATION" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="YES_Instrumentation" EntityType="Self.YES_Instrumentation" store:Type="Tables" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [YES_Instrumentation].[EMPLOYEE_ID] AS [EMPLOYEE_ID], 
+    [YES_Instrumentation].[USER_CURRENT_REGION] AS [USER_CURRENT_REGION], 
+    [YES_Instrumentation].[TECHNOLOGY_CD] AS [TECHNOLOGY_CD], 
+    [YES_Instrumentation].[TASK] AS [TASK], 
+    [YES_Instrumentation].[ELAPSED_TIME] AS [ELAPSED_TIME]
+    FROM [dbo].[YES_Instrumentation] AS [YES_Instrumentation]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="YES_LOG_TIME" EntityType="Self.YES_LOG_TIME" store:Type="Tables" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [YES_LOG_TIME].[EMPLOYEE_ID] AS [EMPLOYEE_ID], 
+    [YES_LOG_TIME].[TECHNOLOGY_CD] AS [TECHNOLOGY_CD], 
+    [YES_LOG_TIME].[LOGGED_IN_TM] AS [LOGGED_IN_TM], 
+    [YES_LOG_TIME].[LOGGED_OUT_TM] AS [LOGGED_OUT_TM]
+    FROM [dbo].[YES_LOG_TIME] AS [YES_LOG_TIME]</DefiningQuery>
+    </EntitySet>
+    <AssociationSet Name="REFHYES_APPLICATION_USER10" Association="Self.REFHYES_APPLICATION_USER10">
+      <End Role="YES_APPLICATION_USER" EntitySet="YES_APPLICATION_USER" />
+      <End Role="YES_LOG_TIME" EntitySet="YES_LOG_TIME" />
+    </AssociationSet>
+    <AssociationSet Name="REFHYES_APPLICATION_USER11" Association="Self.REFHYES_APPLICATION_USER11">
+      <End Role="YES_APPLICATION_USER" EntitySet="YES_APPLICATION_USER" />
+      <End Role="YES_LOG_TIME" EntitySet="YES_LOG_TIME" />
+    </AssociationSet>
+    <AssociationSet Name="REFHYES_APPLICATION_USER12" Association="Self.REFHYES_APPLICATION_USER12">
+      <End Role="YES_APPLICATION_USER" EntitySet="YES_APPLICATION_USER" />
+      <End Role="YES_LOG_TIME" EntitySet="YES_LOG_TIME" />
+    </AssociationSet>
+    <AssociationSet Name="REFHYES_APPLICATION_USER7" Association="Self.REFHYES_APPLICATION_USER7">
+      <End Role="YES_APPLICATION_USER" EntitySet="YES_APPLICATION_USER" />
+      <End Role="YES_ESTIMATE_COMMON" EntitySet="YES_ESTIMATE_COMMON" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

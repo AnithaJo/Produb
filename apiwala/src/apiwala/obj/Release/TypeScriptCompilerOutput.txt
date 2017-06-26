@@ -1,0 +1,4 @@
+D:\Users\H224169\Documents\Visual Studio 2015\Projects\apiwala\src\apiwala\wwwroot\app\components\app.component.js
+D:\Users\H224169\Documents\Visual Studio 2015\Projects\apiwala\src\apiwala\wwwroot\app\components\app.component.js.map
+D:\Users\H224169\Documents\Visual Studio 2015\Projects\apiwala\src\apiwala\wwwroot\app\main.js
+D:\Users\H224169\Documents\Visual Studio 2015\Projects\apiwala\src\apiwala\wwwroot\app\main.js.map

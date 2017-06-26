@@ -1,0 +1,1 @@
+﻿SELECT avg(cast(ELAPSED_TIME as float)),USER_CURRENT_REGION from YES_Instrumentation where TECHNOLOGY_CD='HP'  group by USER_CURRENT_REGION;

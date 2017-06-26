@@ -1,0 +1,59 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="ExperimentModelStoreContainer" CdmEntityContainer="ExperimentEntities111">
+    <EntitySetMapping Name="Estimate_Common">
+      <EntityTypeMapping TypeName="ExperimentModel.Estimate_Common">
+        <MappingFragment StoreEntitySet="Estimate_Common">
+          <ScalarProperty Name="Estimate_Id" ColumnName="Estimate_Id" />
+          <ScalarProperty Name="Employee_Id" ColumnName="Employee_Id" />
+          <ScalarProperty Name="Technology_Name" ColumnName="Technology_Name" />
+          <ScalarProperty Name="Region" ColumnName="Region" />
+          <ScalarProperty Name="Creation_date" ColumnName="Creation_date" />
+          <ScalarProperty Name="Estimate_Status" ColumnName="Estimate_Status" />
+          <ScalarProperty Name="Finish_date" ColumnName="Finish_date" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Maps">
+      <EntityTypeMapping TypeName="ExperimentModel.Map">
+        <MappingFragment StoreEntitySet="Maps">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="lat" ColumnName="lat" />
+          <ScalarProperty Name="long" ColumnName="long" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Performances">
+      <EntityTypeMapping TypeName="ExperimentModel.Performance">
+        <MappingFragment StoreEntitySet="Performance">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="e_Id" ColumnName="e.Id" />
+          <ScalarProperty Name="Technology_name" ColumnName="Technology_name" />
+          <ScalarProperty Name="Region" ColumnName="Region" />
+          <ScalarProperty Name="Operation_name" ColumnName="Operation_name" />
+          <ScalarProperty Name="Time_Taken" ColumnName="Time_Taken" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="WebSites">
+      <EntityTypeMapping TypeName="ExperimentModel.WebSite">
+        <MappingFragment StoreEntitySet="WebSites">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <FunctionImportMapping FunctionImportName="f_Test_Emp" FunctionName="ExperimentModel.Store.f_Test_Emp" />
+    <FunctionImportMapping FunctionImportName="f_Test_Estimate" FunctionName="ExperimentModel.Store.f_Test_Estimate" />
+    <FunctionImportMapping FunctionImportName="USER_REGION" FunctionName="ExperimentModel.Store.USER_REGION" />
+    <EntitySetMapping Name="USER_REGIONS">
+      <EntityTypeMapping TypeName="ExperimentModel.USER_REGIONS">
+        <MappingFragment StoreEntitySet="USER_REGIONS">
+          <ScalarProperty Name="REGION" ColumnName="REGION" />
+          <ScalarProperty Name="EMPLOYEE_ID" ColumnName="EMPLOYEE_ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <FunctionImportMapping FunctionImportName="USER_REGIONS_SP" FunctionName="ExperimentModel.Store.USER_REGIONS_SP" />
+  </EntityContainerMapping>
+</Mapping>

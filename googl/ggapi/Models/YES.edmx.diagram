@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="48f73406a7944a5cbe979f359e2d0682" Name="Diagram1">
+        <EntityTypeShape EntityType="UOP_YES1QModel.YES_APPLICATION_USER" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="UOP_YES1QModel.YES_ESTIMATE_COMMON" Width="1.5" PointX="0.75" PointY="5.5" />
+        <AssociationConnector Association="UOP_YES1QModel.REFHYES_APPLICATION_USER7" />
+        <EntityTypeShape EntityType="UOP_YES1QModel.YES_CUSTOMER" Width="1.5" PointX="3.375" PointY="0.75" />
+        <EntityTypeShape EntityType="UOP_YES1QModel.YES_Instrumentation" Width="1.5" PointX="5.625" PointY="3.25" />
+        <EntityTypeShape EntityType="UOP_YES1QModel.YES_LOCATION" Width="1.5" PointX="5.375" PointY="0.75" />
+        <EntityTypeShape EntityType="UOP_YES1QModel.YES_LOG_TIME" Width="1.5" PointX="3.75" PointY="7.625" />
+        <AssociationConnector Association="UOP_YES1QModel.REFHYES_APPLICATION_USER10" />
+        <AssociationConnector Association="UOP_YES1QModel.REFHYES_APPLICATION_USER11" />
+        <AssociationConnector Association="UOP_YES1QModel.REFHYES_APPLICATION_USER12" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

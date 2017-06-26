@@ -1,0 +1,1 @@
+﻿Select count(Creation_date) from Estimate_Common where Creation_date > DATEADD(month, -24, GETDATE()) group by Estimate_Status;

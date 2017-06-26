@@ -1,0 +1,22 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="ExperimentModel1StoreContainer" CdmEntityContainer="ExperimentEntities1">
+    <EntitySetMapping Name="Maps">
+      <EntityTypeMapping TypeName="ExperimentModel1.Map">
+        <MappingFragment StoreEntitySet="Maps">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="lat" ColumnName="lat" />
+          <ScalarProperty Name="long" ColumnName="long" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="WebSites">
+      <EntityTypeMapping TypeName="ExperimentModel1.WebSite">
+        <MappingFragment StoreEntitySet="WebSites">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

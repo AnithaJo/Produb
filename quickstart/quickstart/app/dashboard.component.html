@@ -1,0 +1,21 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+	<meta charset="utf-8" />
+</head>
+<body>
+    <h3>Top Heroes</h3>
+    <div class="grid grid-pad">
+        <div  class="col-1-4">
+            <div class="module hero">
+                <h4 >{{heroes}}<br></h4>
+                <input [(ngModel)]="hero" ><p *ngFor="let h of hero">{{h}}</p><br> 
+                <button (click)="sendHero()">check</button>{{hero}}
+               
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>

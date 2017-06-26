@@ -1,0 +1,79 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="ExperimentModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="Estimate_Common">
+    <Key>
+      <PropertyRef Name="Estimate_Id" />
+    </Key>
+    <Property Name="Estimate_Id" Type="Int32" Nullable="false" />
+    <Property Name="Employee_Id" Type="Int32" Nullable="false" />
+    <Property Name="Technology_Name" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Region" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Creation_date" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="Estimate_Status" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Finish_date" Type="DateTime" Precision="0" />
+  </EntityType>
+  <EntityType Name="Map">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" />
+    <Property Name="lat" Type="Double" Nullable="false" />
+    <Property Name="long" Type="Double" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Performance">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" />
+    <Property Name="e_Id" Type="Int32" Nullable="false" />
+    <Property Name="Technology_name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Region" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Operation_name" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Time_Taken" Type="Double" Nullable="false" />
+  </EntityType>
+  <EntityType Name="WebSite">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" />
+    <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+  </EntityType>
+  <EntityContainer Name="ExperimentEntities111" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Estimate_Common" EntityType="Self.Estimate_Common" />
+    <EntitySet Name="Maps" EntityType="Self.Map" />
+    <EntitySet Name="Performances" EntityType="Self.Performance" />
+    <EntitySet Name="WebSites" EntityType="Self.WebSite" />
+    <FunctionImport Name="f_Test_Emp" ReturnType="Collection(Int32)">
+      <Parameter Name="param1" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="f_Test_Estimate" ReturnType="Collection(Int32)">
+      <Parameter Name="param1" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="USER_REGION">
+      <Parameter Name="eid" Mode="In" Type="String" />
+      <Parameter Name="region" Mode="In" Type="String" />
+    </FunctionImport>
+    <EntitySet Name="USER_REGIONS" EntityType="ExperimentModel.USER_REGIONS" />
+    <FunctionImport Name="USER_REGIONS_SP">
+      <Parameter Name="eid" Mode="In" Type="String" />
+      <Parameter Name="region" Mode="In" Type="String" />
+    </FunctionImport>
+  </EntityContainer>
+  <EntityType Name="USER_REGIONS">
+    <Key>
+      <PropertyRef Name="EMPLOYEE_ID" />
+    </Key>
+    <Property Name="EMPLOYEE_ID" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="false" />
+    <Property Name="REGION" Type="String" Nullable="false" MaxLength="30" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="USER_REGIONS1">
+    <Key>
+      <PropertyRef Name="EMPLOYEE_ID" />
+      <PropertyRef Name="LOCATION_ID" />
+      <PropertyRef Name="REGION" />
+    </Key>
+    <Property Name="EMPLOYEE_ID" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="false" />
+    <Property Name="LOCATION_ID" Type="Int32" Nullable="false" />
+    <Property Name="REGION" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+  </EntityType>
+</Schema>

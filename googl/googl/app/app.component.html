@@ -1,0 +1,59 @@
+﻿<!--<div class="ui-g ui-g-nopad w3-light-blue" style="width:100%"><button pButton type="button" label="USAGE" (click)="usage()" class="ui-g-4">YES</button> <button pButton type="button" label="PERFORMANCE" (click)="performance()"  class="ui-g-4">YES</button> 
+</div>-->
+<div class="ui-g" style="width:100%;height:50px">
+    <div class="ui-g-4" ><button [ngClass]="{'button': !clicked, 'button2': clicked}" (click)="usage()" style="width:33%">USAGE</button></div>
+    <div class="ui-g-4" ><button [ngClass]="{'button1': !clicked1, 'button2': clicked1}" (click)="performance()" style="width:33%" >PERFORMANCE</button></div>
+    <div class="ui-g-4"><button [ngClass]="{'button1': !clicked2, 'button2': clicked2}" (click)="report()" style="width:33%">REPORT</button></div>
+</div>
+<!--<button type="button" routerlink="/Performance" >Performance</button>
+<a routerLink="/Performance">Heroes</a>--><!--<p-tabMenu [model]="items"> </p-tabMenu>
+<div class="w3-row">
+    <div class="w3-half w3-black w3-container w3-center" style="height:700px">
+        <div class="w3-padding-64">
+            <h1>My Logo</h1>
+        </div>
+        <div class="w3-padding-64">
+            <a href="#" class="w3-button w3-black w3-block w3-hover-blue-grey w3-padding-16">Home</a>
+            <a href="#work" class="w3-button w3-black w3-block w3-hover-teal w3-padding-16">My Work</a>
+            <a href="#work" class="w3-button w3-black w3-block w3-hover-dark-grey w3-padding-16">Resume</a>
+            <a href="#contact" class="w3-button w3-black w3-block w3-hover-brown w3-padding-16">Contact</a>
+        </div>
+    </div>
+    <div class="w3-half w3-blue-grey w3-container" style="height:700px">
+        <div class="w3-padding-64 w3-center">
+            <h1>About Me</h1>
+            <img src="/w3images/avatar3.png" class="w3-margin w3-circle" alt="Person" style="width:50%">
+            <div class="w3-left-align w3-padding-large">
+                <p>Lorem ipusm sed vitae justo condimentum, porta lectus vitae, ultricies congue gravida diam non fringilla.</p>
+                <p>Lorem ipusm sed vitae justo condimentum, porta lectus vitae, ultricies congue gravida diam non fringilla.</p>
+            </div>
+        </div>
+    </div>
+</div>-->
+<router-outlet></router-outlet>
+<!--<div>
+    <h2>Hello {{name}}</h2>
+    <label>Name</label>
+    <select [(ngModel)]="name" name="Select name" >
+        <option *ngFor="let n of names">{{n}}</option>
+    </select>
+
+</div>-->
+<!--<my-maps [check] ="hero" ></my-maps>-->
+
+   <!--<h1 class="saurav">
+        <span *ngFor="let hr of hero" > {{hr?.lat}} </span> <br> <br>
+    </h1>-->
+   
+<!--<h1 class="saurav" >{{hr.Name}}  <br> <br>--> 
+        <!--</h1>-->
+    <!--<ul><li > {{heros.Id}}</li>
+        <li> {{heros.Name}}</li></ul><br>-->
+    
+    <!--<h3><label>New hero name: <input #newHeroName /></label></h3>
+    <h3><label>New hero Id: <input #newHeroId /></label></h3>
+    <button style="border-color:chartreuse;color:black" (click)="addHero(newHeroName.value,newHeroId.value)">Add Hero</button>-->
+
+
+
+ 

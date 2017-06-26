@@ -1,0 +1,138 @@
+﻿
+
+    <div id="pre" class="w3-center w3-container" *ngIf="receive" style="margin-top:100px">
+        <i class="fa fa-spinner fa-pulse fa-3x fa-fw"></i>
+        <!--<canvas #myChart width="400" height="400"></canvas>-->
+    </div>
+<div  *ngIf="send" style="background-color:white">
+    <div class="w3-container w3-half w3-right ">
+    <div *ngIf="regn" class="w3-animate-zoom" style="margin-top:380px;margin-left:10%; width:400px;position:absolute">
+        <fieldset style="background-color:lightgray"> <header style="text-align:left">Across All Regions</header></fieldset>
+        <p-treeTable [value]="files">
+
+            <p-column field="Operation" header="Operation"></p-column>
+            <p-column field="Technology" header="Technology"></p-column>
+            <p-column field="Time" header="Time"></p-column>
+            <p-footer>
+               
+            </p-footer>
+        </p-treeTable>
+    </div>
+    <div *ngIf="display" class="w3-animate-zoom" style="margin-top:6%;margin-left:10%;position:absolute;width:400px">
+        <div style="overflow:hidden;border-style:double double none double" *ngFor="let car of cars">
+            <fieldset style="overflow:visible;font-family:'Arial Black', Gadget, sans-serif;font-size:22px"> <header>Selected Details</header></fieldset>
+            
+                <div class="ui-grid-row">
+                    
+                        <div class="ui-grid-col-6" style="color:orangered;font-family:'Arial Black', Gadget, sans-serif;font-size:22px;border-style:outset"><strong>Technology    :</strong>    </div>
+                        <div class="ui-grid-col-6 w3-center"  style="color:orangered;font-family: 'Acme';font-size: 22px;border-style:inset">{{car.selected_tech}}</div>
+                    
+                </div>
+                <div class="ui-grid-row">
+                    
+                        <div class="ui-grid-col-6" style="color:orangered;font-family:'Arial Black', Gadget, sans-serif;font-size:22px;border-style:outset"><strong>Region        :</strong></div>
+                        <div class="ui-grid-col-6 w3-center" style="color:orangered;font-family: 'Acme';font-size: 22px;border-style:inset">{{car.selected_region}}</div>
+                    
+                </div>
+                <div class="ui-grid-row">
+                 
+                        <div class="ui-grid-col-12" style="color:orangered;font-family:'Arial Black', Gadget, sans-serif;font-size:22px;border-style:outset"><strong>Operation & Time:</strong></div>
+                    
+                </div>
+                <div class="ui-grid-row">
+                   
+
+                        <div class="ui-grid-col-6" style="color:orangered;font-family:Impact, Charcoal, sans-serif;font-size:22px;border-style:outset">{{car.selected_operation}}   :</div>
+                        <div class="ui-grid-col-6 w3-center" style="color:orangered;font-family: 'Acme';font-size: 22px;border-style:inset">{{car.Average_Time | number:'1.2-2'}}</div>
+                    
+
+                </div>
+                <div class="ui-grid-row">
+                    
+
+                        <div class="ui-grid-col-6" style="color:green;font-family:Impact, Charcoal, sans-serif;font-size:22px;border-style:outset">{{car.sau[0].Name}}    :</div>
+                        <div class="ui-grid-col-6 w3-center" style="color:green;font-family: 'Acme';font-size: 22px;border-style:inset">{{car.sau[0].Id | number:'1.2-2'}}</div>
+              
+                </div>
+                <div class="ui-grid-row">
+                    
+
+                        <div class="ui-grid-col-6" style="color:green;font-family:Impact, Charcoal, sans-serif;font-size:22px;border-style:outset">{{car.sau[1].Name}}   :</div>
+                        <div class="ui-grid-col-6 w3-center" style="color:green;font-family: 'Acme';font-size: 22px;border-style:inset">{{car.sau[1].Id | number:'1.2-2'}}</div>
+                    
+                </div>
+           
+        </div>
+    </div>
+    <div *ngIf="avg" class="w3-animate-right w3-center" style="position:absolute;width:400px;background-color:white">
+        <div *ngFor="let car of cars">
+            <fieldset>
+                <div class="ui-grid-row">
+                    <div class="ui-grid-col-6" style="color:orangered">Technology  :</div>
+                    <div class="ui-grid-col-6" style="color:orangered">{{car.selected_tech}}</div>
+                </div>
+                <div class="ui-grid-row">
+                    <div class="ui-grid-col-6" style="color:orangered">Region  :</div>
+                    <div class="ui-grid-col-6" style="color:orangered">{{car.selected_region}}</div>
+                </div>
+                <div class="ui-grid-row">
+                    <div class="ui-grid-col-6" style="color:orangered">Time    :</div>
+                    <div class="ui-grid-col-6" style="color:orangered">{{car.Average_Time | number:'1.2-2'}}</div>
+                </div>
+            </fieldset>
+        </div>
+    </div>
+    </div>
+        <!--<p-growl [value]="msgs"></p-growl>
+        <div class="w3-padding-8 w3-center">
+            <h1>PERFORMANCE</h1>
+        </div>-->
+        <!--<button class="w3-button w3-round-xxlarge w3-black" (click)="refresh()" style="margin-left:70%">Refresh</button>-->
+        <!--<div *ngIf="!show" class="w3-center " style="margin-bottom:379px"> <i class="fa fa-spinner fa-pulse fa-3x fa-fw"></i></div>-->
+    <!--<div *ngIf="chacha" class="w3-animate-left" style="transform: rotate(270deg);transform-origin: left top 0;margin-top:35%;position:absolute">TIME (sec)
+    </div>-->
+        <div class="w3-padding-32 w3-animate-left w3-container w3-half w3-left">
+            <div style="width:50%;padding-left:10px">
+                <label>Technology</label>
+                <select [(ngModel)]="selected" class="w3-select w3-border  w3-sand" name="option" (change)="update($event)">
+                    <option value="All" selected>All Technologies</option>
+                    <option value="HP">HP</option>
+                    <option value="UF">UF</option>
+                    <option value="FCC">FCC</option>
+                    <option value="LPI">LPI</option>
+                    <option value="HFA">HFA</option>
+                    <option value="YESHC">YESHC</option>
+
+                </select>
+            </div>
+            <div *ngIf="!chacha" class="w3-center" style="padding-top:4em"><i class="fa fa-spinner fa-pulse fa-3x fa-fw">
+                </i><br><br>
+            LOADING....
+            </div>
+            <div class="w3-padding-16" *ngIf="chacha">
+            <p-chart #chart width="700px" height="575px"type="line" [data]="data" [options]="option"  (onDataSelect)="selectData($event)"></p-chart>
+             
+            <!--<div class="w3-animate-left w3-center">REGION</div>--> 
+           </div>
+            <!--<input type="text" [(ngModel)]="address" (invokeEvent)="getAddress($event)" googleplace />
+            {{lat}}-->
+           
+            </div>
+            <!--<div class="w3-padding-32" style="position:absolute;width:200px">
+            <p-chart #chart1 type="line" [data]="data" (onDataSelect)="selectData($event)"></p-chart>
+                <div class="w3-left w3-padding-64" style="width:50%">
+                    <select class="w3-select w3-border  w3-pale-yellow" name="option" (change)="update($event)">
+                        <option value="" disabled selected>Choose your option</option>
+                        <option value="FCC">Option 1</option>
+                        <option value="FCC">Option 2</option>
+                        <option value="FCC">Option 3</option>
+                    </select>
+
+                </div>
+                </div>-->
+    <!--<div style="margin-top:700px">
+        <h2>Hello</h2>
+        <canvas #myChart width="400" height="400"></canvas>
+    </div>-->
+   
+</div>

@@ -1,0 +1,152 @@
+﻿<div id="pre" class="w3-center w3-light-grey w3-container" *ngIf="!see" style="height:900px">
+    <div style="margin-top:100px"><i class="fa fa-circle-o-notch fa-spin fa-4x fa-fw"></i> </div>
+</div>
+<div *ngIf="see" style="margin-left:1%;margin-right:1%" >
+   <div >
+      
+       
+     <p-confirmDialog width="425"></p-confirmDialog>
+       </div>
+    <div style="border-style:ridge ridge none ridge;margin-top:2%">
+       
+            <div style="height:80px;margin-top:1%">
+               
+                    <select [(ngModel)]="selected_tech" class="w3-select w3-border w3-center w3-pale-yellow" name="option" style="width:200px">
+                        <option value="All" >ALL Technologies</option>
+                        <option *ngFor="let tech of techs" [value]=tech>{{tech}}</option>
+                    </select>
+                    <select [(ngModel)]="selected_report_type" name="option1" class="w3-select w3-center w3-border  w3-pale-yellow" style="width:200px">
+                        <option value="All">All Estimates</option>
+                        <option value="IPRG">In Progress Cases</option>
+                        <option value="ISS">Issued Cases</option>
+                        <option value="COM">Completed Cases</option>
+                        <option value="monthly_report">Monthly Report</option>
+                        <option value="estimator_report">Estimator Report</option>
+                    </select>
+                    <select [(ngModel)]="selected_time_interval" class="w3-select w3-border  w3-pale-yellow" name="option2" style="width:200px" (change)="selectInterval($event)">
+                        <option value="1" disabled>select time</option>
+                        <option value=-1>past 1 month</option>
+                        <option value=-2>past 2 months</option>
+                        <option value=-3>past 3 months</option>
+                        <option value=-4>past 4 months</option>
+                        <option value=-5>past 5 months</option>
+                        <option value=-6>past 6 months</option>
+                        <option value=-12>past 1 year</option>
+                        <option value=-24>past 2 years</option>
+                        <option value=-36>past 3 years</option>
+                        <option value=-48>past 4 years</option>
+                        <option value=-60>past 5 years</option>
+                        <option value=-120>past 10 years</option>
+                    </select>
+                    
+                FROM:  <p-calendar title="Choose a date" [(ngModel)]="dateP" dateFormat="yy-mm-dd" showIcon="true" monthNavigator="true"  yearRange="1900:2100" selectOtherMonths="true" yearNavigator="true" styleClass="calndr" ></p-calendar>
+                <button class="w3-left" type="button" pButton icon="fa-file-o" iconPos="left" label="Generate Report" (click)="confirm()" style="margin-left:82%;margin-top:-3.3%"></button>
+                   <div style="margin-left:51%;position:absolute"> TO:<p-calendar title="Choose a date" [(ngModel)]="dateQ" dateFormat="yy-mm-dd" showIcon="true" monthNavigator="true" yearRange="1900:2100" selectOtherMonths="true" yearNavigator="true" styleClass="calndr1" ></p-calendar></div>
+                    
+              
+               
+            </div>
+       
+    </div>
+       
+
+   
+    <div style="background-color:black;height:20px"></div>
+       
+   
+    <!--<p-dataTable [value]="data2" [rows]="12" [paginator]="true" [globalFilter]="gb" #dt selectionMode="single"  reorderableColumns="true" resizableColumns="true">
+        <template ptemplate="rowgroupheader" let-rowdata>{{rowdata['year']}}</template>
+        
+        <p-column field="year"  sortable="true" [(hidden)]="year_check" class="ui-datatable-header"><template pTemplate="header"><span style="color:red;font-family:Impact, Charcoal, sans-serif;font-size:22px">YEAR</span></template></p-column>
+        <p-column field="month"  sortable="true"  [(hidden)]="month_check"><template pTemplate="header">
+    <span style="color:red;font-family:Impact, Charcoal, sans-serif;font-size:22px">MONTH</span>
+</template></p-column>
+        <p-column field="cases"  [(hidden)]="cases_check"><template pTemplate="header">
+    <span style="color:red;font-family:Impact, Charcoal, sans-serif;font-size:22px">CASES</span>
+</template></p-column>
+        <p-column field="total_hours"  [(hidden)]="tothour_check"><template pTemplate="header">
+    <span style="color:red;font-family:Impact, Charcoal, sans-serif;font-size:22px">TOTAL HOURS</span>
+</template></p-column>
+        <p-column field="other_hours"  [(hidden)]="odrhour_check"><template pTemplate="header">
+    <span style="color:red;font-family:Impact, Charcoal, sans-serif;font-size:22px">OTHER HOURS</span>
+</template></p-column>
+        <p-column field="average"   [(hidden)]="cph_check"><template pTemplate="header">
+    <span style="color:red;font-family:Impact, Charcoal, sans-serif;font-size:22px">CASES PER HOUR</span>
+</template></p-column>
+        
+       
+        
+    </p-dataTable>-->
+    <!--<div class="ui-widget-header" style="padding:4px 10px;border-bottom: 0 none">
+        <i class="fa fa-search" style="margin:4px 4px 0 0"></i>
+        <input #gb type="text" pInputText size="50" placeholder="Global Filter">
+
+    </div>-->
+    <div *ngIf="!allestimates">
+        <div style="height:60px">
+            <button class="w3-right w3-padding-small" type="button" pButton icon="fa-file-o" iconPos="left" label="Download" (click)="dt.exportCSV()" style="margin-top:7px"></button>
+            <input #gb type="text" pInputText size="20" placeholder="Global Filter" style="margin-left:76%;height:40px;width:150px;margin-top:7px">
+            <div style="margin-left:62%;position:absolute;margin-top:-42px">
+                <p-multiSelect [options]="columnOptions_all" [(ngModel)]="cols_all" defaultLabel="Columns List"></p-multiSelect>
+            </div>
+        </div>
+        <div style="overflow-y:scroll;height:500px">
+            <p-dataTable [value]="data_all" [rows]="10" [paginator]="true" [globalFilter]="gb" #dt selectionMode="single" reorderableColumns="true">
+                <p-column *ngFor="let col of cols_all" [field]="col.field" [sortable]="true">
+                    <template pTemplate="header" style="position:fixed">
+                        <span style="color:black;font-size:0.9em">{{col.header}}</span>
+                    </template>
+                </p-column>
+            </p-dataTable>
+        </div>
+    </div>
+    <div *ngIf="!monthlyestimates">
+    <div style="height:60px">
+        <button class="w3-right w3-padding-small" type="button" pButton icon="fa-file-o" iconPos="left" label="Download" (click)="dt2.exportCSV()" style="margin-top:7px"></button>
+        <input #gb2 type="text" pInputText size="20" placeholder="Global Filter" style="margin-left:76%;height:40px;width:150px;margin-top:7px">
+        <div style="margin-left:62%;position:absolute;margin-top:-42px">
+            <p-multiSelect [options]="columnOptions_monthly" [(ngModel)]="cols_monthly"></p-multiSelect>
+        </div>
+    </div>
+    <div style="overflow-y:scroll;height:400px" >
+        <p-dataTable [value]="data_monthly" [rows]="7" [paginator]="true" [globalFilter]="gb2" #dt2 selectionMode="single" reorderableColumns="true">
+            <p-column *ngFor="let col of cols_monthly" [field]="col.field" [sortable]="true">
+                <template pTemplate="header">
+                    <span style="color:black;font-size:0.9em">{{col.header}}</span>
+                </template>
+            </p-column>
+        </p-dataTable>
+    </div>
+</div>
+    <div *ngIf="!estimatorestimates">
+    <div style="height:60px">
+        <button class="w3-right w3-padding-small" type="button" pButton icon="fa-file-o" iconPos="left" label="Download" (click)="dt1.exportCSV()" style="margin-top:7px"></button>
+        <input #gb1 type="text" pInputText size="20" placeholder="Global Filter" style="margin-left:76%;height:40px;width:150px;margin-top:7px">
+        <div style="margin-left:62%;position:absolute;margin-top:-42px">
+            <p-multiSelect [options]="columnOptions_estimator" [(ngModel)]="cols_estimator"></p-multiSelect>
+        </div>
+    </div>
+    <div style="overflow-y:scroll;height:400px" >
+    <p-dataTable #dt1 [value]="data_estimator" [rows]="7" [paginator]="true" [globalFilter]="gb1"  selectionMode="single" reorderableColumns="true">
+        <p-column *ngFor="let col of cols_estimator" [field]="col.field" [sortable]="true">
+            <template pTemplate="header">
+                <span style="color:black;font-size:0.9em">{{col.header}}</span>
+            </template>
+        </p-column>
+    </p-dataTable>
+        </div>
+        </div>
+    <!--<div>
+        <p-dataTable [value]="data_monthly" [rows]="10" [paginator]="true" [globalFilter]="gb" #dt selectionMode="single" [hidden]="allestimates" reorderableColumns="true">
+            <p-header>
+            </p-header>
+            <p-column *ngFor="let col of cols" [field]="col.field" [sortable]="true">
+                <template pTemplate="header">
+                    <span style="color:red;font-family:Impact, Charcoal, sans-serif;font-size:22px;text-align:match-parent">{{col.header}}</span>
+                </template>
+            </p-column>
+        </p-dataTable>
+    </div>-->
+    <!--<div ui-grid="{ data: myData }" style="width:400px;height:400px" ui-grid-infinite-scroll></div>-->
+    
+</div>

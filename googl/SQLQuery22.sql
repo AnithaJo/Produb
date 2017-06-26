@@ -1,0 +1,1 @@
+﻿Select count(Distinct Employee_Id) from Estimate_Common where Creation_date > DATEADD(month, -12, GETDATE());

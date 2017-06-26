@@ -1,0 +1,214 @@
+﻿<div id="pre" class="w3-center w3-light-grey w3-container" *ngIf="receive" style="height:900px">
+<div style="margin-top:100px"><i class="fa fa-spinner fa-pulse fa-3x fa-fw"></i> </div> </div>
+<div *ngIf="send">
+<div  class="w3-light-grey w3-container" style="height:900px">
+    <div class="w3-left" style="margin-top:8%;width:25%">
+        <strong> Select Time Interval:</strong>
+        <select [(ngModel)]="time" class="w3-select w3-border  w3-pale-yellow" name="option1" (change)="update1($event)" autofocus>
+            <option value="" disabled selecteed>Select Time</option>
+            <option value="-1">Past 1 month</option>
+            <option value="-2">Past 2 months</option>
+            <option value="-3">Past 3 months</option>
+            <option value="-4">Past 4 months</option>
+            <option value="-5">Past 5 months</option>
+            <option value="-6">Past 6 months</option>
+            <option value="-12">Past 1 year</option>
+            <option value="-24">Past 2 years</option>
+            <option value="-36">Past 3 years</option>
+        </select>
+    </div>
+    <div style="width:25%;margin-top:8%;margin-left:25%">
+        <strong> Select Your Region:</strong>
+        <select [(ngModel)]="selected" class="w3-select w3-border  w3-pale-yellow" name="option" (change)="update($event)">
+            <option value="" disabled selected>Select your region</option>
+            <option *ngFor="let r of msgs" [value]=r>{{r}}</option>
+
+        </select>
+
+    </div>
+
+    <div class="w3-half w3-left">
+    <!--<button class="w3-button w3-round-xxlarge w3-right w3-black" (click)="refresh()">Refresh</button>-->
+
+    <!--<div *ngIf="map_show" id="map" style="height:500px;width:100%"></div>-->
+        
+    <div *ngIf="show" class="w3-padding-64" >
+        <sebm-google-map #SebmGoogleMap [latitude]="lat3" [longitude]="lng3" [zoom]=2 [streetViewControl]="true" (mapClick)="closeWindow()">
+            <sebm-google-map-marker *ngFor="let l of marker_lat ;let i= index" openInfoWindow="false" (markerClick)="getlatlng($event,infowindow)"  [latitude]="l"
+                                    [longitude]="marker_lng[i]" [label]="marker[i]">
+                <sebm-google-map-info-window #infowindow [disableAutoPan]="true" >
+                    <strong>No. of Estimators</strong>: {{right}}<br/>
+                    <strong style="color:red">No. of Cases</strong>: {{total}}<br />
+                    <strong style="color:green">No. of Cases Completed</strong>: {{left}}<br />
+                   
+                    <div class="w3-center"><button type="button" (click)="showdetails()" style="background-color:dodgerblue; color:black;align-self:center">view details</button></div>
+                </sebm-google-map-info-window>
+</sebm-google-map-marker>
+
+        </sebm-google-map>
+        </div>
+      
+        </div>
+
+    
+        <div *ngIf="avg" class="w3-animate-zoom w3-center w3-half w3-right" style="position:absolute;width:400px;background-color:white;margin-left:60%;margin-top:1%">
+       
+            <div style="overflow:hidden;border-style:double double none double" >
+                
+                <!--<p-dialog header="Employee List" [(visible)]="display" dismissableMask="true" width="300" height="700" modal="true">
+                    <p-dataScroller [value]="employee" [rows]="5" [buffer]="0.4">
+                       <template let car>
+                         <div class="ui-grid-row ">
+                            <div class="ui-grid-col-12" style="color:black">car</div>
+                        </div><br />
+                           </template>
+                    </p-dataScroller>
+                    <p-dataTable [value]="employee">
+                        <p-headerColumnGroup>
+                            <p-row>
+                                <p-column header="Brand" rowspan="3"></p-column>
+                                <p-column header="Sale Rate" rowspan="3"></p-column>
+                            </p-row>
+                        </p-headerColumnGroup>
+
+                        <p-column></p-column>
+                        <p-column></p-column>
+
+
+                        <p-footerColumnGroup>
+                            <p-row>
+                                <p-column footer="Totals:" rowspan="3"></p-column>
+                                <p-column footer="$506,202"></p-column>
+                                <p-column footer="$531,020"></p-column>
+                            </p-row>
+                        </p-footerColumnGroup>
+                    </p-dataTable>
+
+
+                    <input [(ngModel)]="search" type="number"  /> <button type="button" (click)="searchList()" pButton icon="fa-external-link-square" label="Search"></button>
+
+                        <select [(ngModel)]="variab" size="8" class="w3-select w3-border w3-center w3-pale-yellow" name="option" (change)="update2($event)" autofocus>
+                            <option value="" disabled selected>Employee List </option>
+                            <option *ngFor="let car of employee" [value]=car>{{car}}</option>
+
+                        </select>
+</p-dialog>-->
+                
+               <fieldset style="overflow:visible;font-family:'Arial Black', Gadget, sans-serif;font-size:22px"> Regional Details   </fieldset>
+               
+                <!--<fieldset style="border-style:double">-->
+                   
+                    <div class="ui-grid-row" >
+                        <div class="ui-grid-col-6" style="color:black;font-family:Impact, Charcoal, sans-serif;font-size:22px;border-style:outset" >Region  :</div>
+                        <div class="ui-grid-col-6" style="color:black;font-family: 'Acme';font-size: 22px;border-style:inset">{{selected_region}}</div>
+                    </div>
+                    <div class="ui-grid-row" >
+                        <div class="ui-grid-col-6" style="color:black;font-family:Impact, Charcoal, sans-serif;border-style:outset;font-size:22px">Estimators   :</div>
+                        <div class="ui-grid-col-6" style="color:black;font-family: 'Acme';font-size: 22px;border-style:inset">{{right}}</div>
+                    </div>
+                    <div class="ui-grid-row" >
+                        <div class="ui-grid-col-6" style="color:black;font-family:Impact, Charcoal, sans-serif;border-style:outset;font-size:22px">Total Cases    :</div>
+                        <div class="ui-grid-col-6" style="color:black;font-family: 'Acme';font-size: 22px;border-style:inset">{{total}}</div>
+                    </div>
+                    <div class="ui-grid-row " >
+                        <div class="ui-grid-col-6" style="color:green;font-family:Impact, Charcoal, sans-serif;border-style:outset;font-size:22px">Cases Completed:</div>
+                        <div class="ui-grid-col-6" style="color:green;font-family: 'Acme';font-size: 22px;border-style:inset">{{left}}</div>
+                    </div>
+                    <div class="ui-grid-row" >
+                        <div class="ui-grid-col-6" style="color:orange;font-family:Impact, Charcoal, sans-serif;border-style:outset;font-size:22px">Cases Pending:</div>
+                        <div class="ui-grid-col-6" style="color:orange;font-family: 'Acme';font-size: 22px;border-style:inset">{{bottom}}</div>
+                    </div>
+                    <div class="ui-grid-row" >
+                        <div class="ui-grid-col-6" style="color:orangered;font-family:Impact, Charcoal, sans-serif;border-style:outset;font-size:22px">Cases Abandoned:</div>
+                        <div class="ui-grid-col-6" style="color:orangered;font-family: 'Acme';font-size: 22px;border-style:inset">{{top}}</div>
+                    </div>
+            
+                    <!--<template pTemplate="filter" ngFor let-contact [ngForOf]="employee">
+                        
+                           
+                    </template>-->
+                <!--</fieldset>-->
+               
+            </div>
+       
+         
+        </div>
+    <div *ngIf="avg" class="w3-center w3-animate-zoom " style="margin-left:61.57%;margin-top:24.7%;border-style:double;width:400px;background-color:white">
+        <p-overlayPanel #op>
+
+            <select [(ngModel)]="variab" size="8" class="w3-select w3-border w3-center w3-pale-yellow" name="option" (change)="update2($event)" style="width:200px" autofocus>
+                <option value="" disabled selected>Employee List </option>
+                <option *ngFor="let car of employee" [value]=car>{{car}}</option>
+
+            </select>
+
+        </p-overlayPanel>
+
+        <button type="button" (click)="op.toggle($event)" pButton style="background-color:black" icon="fa-external-link-square" label="Estimators List"></button>
+    </div>
+  
+        <div *ngIf="avg1" class="w3-animate-zoom w3-center"  style="width:400px;background-color:white;margin-left:61.5%; margin-top:5%" >
+        <fieldset><strong>Employee Details</strong></fieldset>
+            <fieldset>
+                <div class="ui-grid-row ">
+                    <div class="ui-grid-col-6" style="color:black">Employee Id   :</div>
+                    <div class="ui-grid-col-6" style="color:black">{{empid}}</div>
+                </div><br />
+                <div class="ui-grid-row ">
+                    <div class="ui-grid-col-6" style="color:black">Region  :</div>
+                    <div class="ui-grid-col-6" style="color:black">{{selected_region}}</div>
+                </div><br />
+                <div class="ui-grid-row ">
+                    <div class="ui-grid-col-6" style="color:black">No. of Cases    :</div>
+                    <div class="ui-grid-col-6" style="color:black">{{total1}}</div>
+                </div><br />
+                <div class="ui-grid-row ">
+                    <div class="ui-grid-col-6" style="color:forestgreen">No. of Cases Completed:</div>
+                    <div class="ui-grid-col-6" style="color:green">{{top1}}</div>
+                </div><br />
+                <div class="ui-grid-row ">
+                    <div class="ui-grid-col-6" style="color:orange">No. of Cases Pending:</div>
+                    <div class="ui-grid-col-6" style="color:orange">{{left1}}</div>
+                </div><br />
+                <div class="ui-grid-row ">
+                    <div class="ui-grid-col-6" style="color:orangered">No. of Cases Abandoned:</div>
+                    <div class="ui-grid-col-6" style="color:orangered">{{bottom1}}</div>
+                </div>
+            </fieldset>
+    </div>
+    </div>
+
+    
+    <!--<div id="buttn"><button pButton type="button" (click)="refresh()" label="Refresh"></button></div>-->
+        
+<!--<div class="w3-half w3-sand w3-container" style="height:900px">
+    <div class="w3-padding-64 w3-center">
+        <h1>PERFORMANCE</h1>
+    </div>
+    <button class="w3-button w3-round-xxlarge w3-right w3-black" (click)="refresh()">Refresh</button>
+    <div *ngIf="!show" class="w3-center " style="margin-bottom:379px"> <i class="fa fa-spinner fa-pulse fa-3x fa-fw"></i></div>
+   
+            <div *ngIf="show" class="w3-padding-64 w3-center" style="width:100%">
+                <p-chart #chart type="line" [data]="data" (onDataSelect)="selectData($event)"></p-chart>
+            </div>
+                
+                <div *ngIf="display" class="w3-center" style="width:100%; ">
+                    <p-dataTable [value]="drop" class="w3-hoverable w3-striped" [responsive]="true">
+                        <p-column class="w3-large" field="Id" header="Id"></p-column>
+                        <p-column field="lat" header="lat"></p-column>
+                        <p-column field="lng" header="lng"></p-column>
+
+
+                        <p-column field="lat" header="lat"></p-column>
+                        <p-column field="lng" header="lng"></p-column>
+                    </p-dataTable>
+                </div>
+               
+            </div>-->
+    <!--<div class="row">
+        <div class="col-md-4">3</div>
+        <div class="col-md-4">9</div>
+    </div>-->
+    <!--<div ><input  [(ngModel)]="cnt" #c="ngModel">{{cnt}}</div>-->
+
+</div>
